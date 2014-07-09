@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script type="text/javascript">
+        function choosecity(){
+            var arr = [["--choose city--"],["Taizhou","Hangzhou","Ningbo","Wenzhou"],["MinHang","Xujiahui", "Jiabei", "PuDong"],["SuZhou","NanJing","Wuxi","Taizhou"],["ShangCheng","XiCheng","HaiDian","Chaoyang"]];
+            var stateNode = document.getElementById("selectid");
+            //var index = stateNode.options[stateNode.selectedIndex].value;
+            var index = stateNode.selectedIndex;
+
+            var citydata = arr[index];
+
+            var cityNode = document.getElementById("subselectid");
+
+            cityNode.length  = 0;
+            for(var i = 0; i < citydata.length; i++){
+                var option = document.createElement("option");
+                option.innerHTML = citydata[i];
+                cityNode.appendChild(option);
+            }
+
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+<select id="selectid" onclick="choosecity()">
+    <option>--choose state--</option>
+    <option>Zhejiang</option>
+    <option>Shanghai</option>
+    <option>Jiangsu</option>
+    <option>Beijing</option>
+</select>
+
+
+<select id="subselectid">
+    <option>--select city--</option>
+</select>
+</body>
+</html>

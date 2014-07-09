@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style type="text/css">
+        table td a:link, table td a:visited{
+            text-decoration: none;
+            color:#0099ff;
+        }
+        table, table td{
+            border:#0099ff 1px solid;
+        }
+
+
+    </style>
+    <script type="text/javascript">
+        var count = 1;
+        function addFile(){
+            var tabNode = document.getElementsByTagName("table")[0];
+            var trNode = tabNode.insertRow();
+            trNode.id = "tr_" + count;
+
+            var tdNode_file = trNode.insertCell();
+            var tdNode_del = trNode.insertCell();
+
+            tdNode_file.innerHTML = "<input type='file' />";
+            tdNode_del.innerHTML = "<a href='javascript:void(0)' onclick='delFile(this)'>Delete "+count+"</a>";
+            count++;
+        }
+
+        function delFile(node){
+//              var trNode = document.getElementById("tr_" + num);
+//
+//              tr
+              var trNode = node.parentNode.parentNode;
+
+              var tbdNode = trNode.parentNode;
+              tbdNode.removeChild(trNode);
+
+//            var tabNode = document.getElementsByTagName("table")[0];
+//            var tbdNode = tabNode.ChildNodes[0];
+//            tbdNode.removeChild(trNode);
+        }
+
+
+
+
+    </script>
+
+
+
+
+
+
+</head>
+<body>
+
+
+<table>
+    <tr>
+        <td>
+            <a href="javascript:void(0)" onclick="addFile()">Add File</a>
+        </td>
+
+
+    </tr>
+</table>
+
+
+</body>
+</html>

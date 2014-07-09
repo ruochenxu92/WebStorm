@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style type = "text/css">
+        table th{
+            background-color: #FF3226;
+        }
+        .two{
+            background-color: #FF9BDE;
+        }
+        .one{
+            background-color: #66FFCC;
+        }
+        .over{
+            background-color: #61FF46;
+        }
+        table{
+            border:#777777 1px solid;
+            width: 600px;
+        }
+
+        table td, table th{
+            width:150px;
+            padding:10px;
+        }
+    </style>
+
+    <title></title>
+    <script type="text/javascript">
+        function mycolor(trNode){
+            var tabNode = document.getElementsByTagName("table")[0];
+            var trs = tabNode.rows;
+
+            for(var i = 0; i < trs.length; i++){
+                if(i%2==1)
+                    trs[i].className="one";
+                else
+                    trs[i].className="two";
+                var classcolor;
+                trs[i].onmouseover=function(){
+                    classcolor = this.className;
+                    this.className = "over";
+                }
+
+
+                trs[i].onmouseout=function(){
+                    this.className = classcolor;
+                }
+            }
+
+        }
+        window.onload = mycolor;//here is very important
+//        var colorclass;
+//        function over(trNode){
+//                colorclass = trNode.className;
+//                trNode.className = "over";
+//        }
+//        function out(trNode){
+//            trNode.className = colorclass;
+//        }
+
+        function sort(){
+            var tabNode = document.getElementsByTagName("table")[0];//arr[0]
+
+            var trs = tabNode.rows;//set
+
+            var arr = new Array();
+
+            for(var i = 1; i < trs.length; i++){
+                arr[i-1] = trs[i];
+            }
+
+
+            SortArray(arr);
+            var tbdNode = tabNode.childNodes[1];
+           // alert(tbdNode.nodeName);
+            for(var i =0; i < arr.length; i++){
+                tbdNode.appendChild(arr[i]);
+            }
+
+
+
+
+            for(var i = 0; i < trs.length; i++) {
+                if (i % 2 == 1)
+                    trs[i].className = "one";
+                else
+                    trs[i].className = "two";
+            }
+        }
+
+        function SortArray(arr){
+            for(var i = 0; i < arr.length;i++){
+                for(var j = i+1; j < arr.length; j++){
+                    if(arr[i].cells[1].innerHTML > arr[j].cells[1].innerHTML){
+                        var tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</head>
+
+
+<body>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th><a href="javascript:void(0)" onclick="sort()">Age</a></th>
+            <th>Address</th>
+        </tr>
+        <tr>
+               <td>Bill</td>
+               <td>10</td>
+               <td>106 S Gregory</td>
+          </tr>
+        <tr>
+            <td>Thomas</td>
+            <td>20</td>
+            <td>106 N Gregory</td>
+        </tr>
+        <tr>
+            <td>Jay</td>
+            <td>19</td>
+            <td>S Kirby & S Oak St</td>
+        </tr>
+        <tr>
+            <td>Wolfram</td>
+            <td>23</td>
+            <td>White and SpringField</td>
+        </tr>
+
+
+    </table>
+
+</body>
+</html>

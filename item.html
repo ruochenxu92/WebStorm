@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script type="text/javascript">
+
+        function getSum(){
+            var items = document.getElementsByName("item");
+            var sum = 0;
+            for(var i=0; i < items.length; i++){
+                if(items[i].checked)
+                sum += parseInt(items[i].value);
+            }
+            var spanNode = document.getElementById("sum");
+            var str ="$" +  sum;
+            spanNode.innerHTML=str.fontsize(8);
+     }
+
+        function checkAll(tr){
+            var b = tr.checked;
+            var allNode = document.getElementsByName("item");
+            for(var i = 0; i<allNode.length; i++){
+                allNode[i].checked = b;
+            }
+        }
+
+    </script>
+
+
+
+
+</head>
+<body>
+<input type="checkbox" name=""all" onclick="checkAll(this)"> Check All<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+<input type="checkbox" name="item" value="300"/>ipad 300<br>
+
+<input type="button" value="total"  onclick="getSum()">
+<span id="sum"></span>
+
+
+
+
+
+
+</body>
+</html>

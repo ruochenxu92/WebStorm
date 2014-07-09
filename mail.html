@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .over{
+            background-color: #61FF46;
+        }
+        .one{
+            background-color: #6BE198;
+        }
+        .two{
+            background-color: #FF9BDE;
+        }
+        table, table tr, table td, table th{
+            border: #66FFCC 1px solid;
+        }
+
+        table th{
+            background-color: #0000FF;
+        }
+        table{
+            width:800px;
+        }
+        table th, table tr{
+            padding:10px;
+            width:200px;
+            height:60px;
+        }
+    </style>
+    <script type="text/javascript">
+        function mycolor(){
+            var tabNode = document.getElementsByTagName("table")[0];
+            var trs = tabNode.rows;
+            for(var i = 1; i < trs.length-1; i++){
+                if(i % 2 == 1)
+                    trs[i].className = "one";
+                else
+                    trs[i].className = "two";
+
+                var classcolor;
+                trs[i].onmouseover=function(){
+                    classcolor = this.className;
+                    this.className = "over";
+                }
+
+
+                trs[i].onmouseout=function(){
+                    this.className = classcolor;
+                }
+            }
+        }
+        window.onload = mycolor;
+
+
+
+        function selectAll(trNode){
+            if(trNode.checked){
+                var items = document.getElementsByName("mail");
+                for(var i = 0; i < items.length; i++){
+                    items[i].checked = true;
+                }
+            }else{
+                var items = document.getElementsByName("mail");
+                for(var i = 0; i < items.length; i++){
+                    items[i].checked = false;
+                }
+            }
+        }
+
+        function Noselected(){
+            var trs = document.getElementsByName("mail");
+            var ths = document.getElementsByName("all");
+            for(var i =0; i < trs.length; i++){
+                trs[i].checked = false;
+            }
+            for(var i = 0; i < ths.length;i++){
+                ths[i].checked = false;
+            }
+        }
+
+        function selectByBut(num) {
+            var trs = document.getElementsByName("mail");
+            for( var i = 0; i < trs.length; i++){
+                if(num > 1)
+                    trs[i].checked = !trs[i].checked;
+                else
+                    trs[i].checked = num;
+            }
+        }
+        function deleteRow(){
+            var trs = document.getElementsByName("mail");
+            for(var i =0; i< trs.length; i++){
+                if(trs[i].checked){
+                    var trNode = trs[i].parentNode;
+                    var tbdNode= trNode.parentNode;
+                    tbdNode.remove(trNode);
+                    i--;
+                }
+            }
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <table>
+
+        <tr>
+            <th><input type="checkbox" name="all" onclick="selectAll(this)"/>Select All</th>
+            <th>from where</th>
+            <th>mail name</th>
+        </tr>
+        <tr >
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 1</td>
+            <td>mail</td>
+        </tr>
+        <tr >
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 2</td>
+            <td>mail</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 3</td>
+            <td>mail</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 4</td>
+            <td>mail</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 5</td>
+            <td>mail</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 6</td>
+            <td>mail</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 7</td>
+            <td>mail</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 8</td>
+            <td>mail</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 9</td>
+            <td>mail</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mail"></td>
+            <td>Zhaoying Wu 10</td>
+            <td>mail</td>
+        </tr>
+
+
+        <tr>
+            <th><input type="checkbox" name="all" onclick="selectAll(this)"/>Select All</th>
+            <th colspan="2">
+
+                <input type="button" name="button" value="Cancel SelectALL" onclick="selectByBut(0)">
+                <input type="button" name="button" value="Select Opposite"  onclick="selectByBut(2)">
+                <input type="button" name="button" value="Select ALL"    onclick="selectByBut(1)">
+                <input type="button" name="delete" value="delete row" onclick="deleteRow()">
+
+
+            </th>
+        </tr>
+    </table>
+</body>
+</html>

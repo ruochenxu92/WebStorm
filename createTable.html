@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+<script type="text/javascript" src="js/doc.js"></script>
+    <style text="text/css">
+        table{
+            border:#66FFCC 1px solid;
+            width:60%;
+        }
+        table th{
+            border:#FF9BDE 1px solid;
+            background-color:#0099FF;
+        }
+        table td{
+            border:#61FF46 1px solid;
+        }
+
+
+    </style>
+
+<script type="text/javascript">
+    function createTable1(){
+        var tabNode = document.createElement("table");
+
+        var tbdNode = document.createElement("tbody");
+
+        var trNode = document.createElement("tr");
+
+        var tdNode = document.createElement("td");
+
+        var textNode = document.createTextNode("Hello");
+
+
+        tdNode.appendChild(textNode);
+        trNode.appendChild(tdNode);
+        tbdNode.appendChild(trNode);
+        tabNode.appendChild(tbdNode);
+
+        var div = document.getElementsByTagName("div")[0];
+        div.appendChild(tabNode);
+
+    }
+
+    function createTable(e){
+        var rows = document.getElementsByName("row")[0].value;
+        var cols = document.getElementsByName("col")[0].value;
+        //alert(rows +" " + cols);
+        var tabNode = document.createElement("table");
+        tabNode.setAttribute("id","tableid");
+
+        for(var i = 0; i < rows; i++){
+            var trNode = tabNode.insertRow();
+            for(var j = 0; j < cols; j++){
+                var tdNode = trNode.insertCell();
+                tdNode.innerHTML= i + " Amazon " + j;
+            }
+        }
+
+//        var trNode = tabNode.insertRow();
+//
+//        var tdNode = trNode.insertCell();
+//
+//        tdNode.innerHTML = "<input type='button' value='XX'>";
+
+        var div = document.getElementsByTagName("div")[0];
+
+        div.appendChild(tabNode);
+        e.disabled = true;
+
+    }
+
+    function deleteRow(){
+        var tabNode = document.getElementById("tableid");
+        var rownum = document.getElementsByName("delRow")[0].value;
+        if(tabNode == null){
+            alert("table does not exist!");
+            return;
+        }
+        if(rownum <=0 || rownum > tabNode.rows.length){
+            alert("rownum is not correct");
+            return;
+        }
+//        alert(rownum);
+//        alert(tabNode.nodeName);
+        tabNode.deleteRow(rownum-1);
+
+    }
+
+    function deleteCol(){
+        var tabNode = document.getElementById("tableid");
+        var colnum = document.getElementsByName("delCol")[0].value;
+//        alert(colnum);
+//        alert(tabNode.nodeName);
+        if(tabNode == null){
+            alert("table is not exist!");
+            return;
+        }
+
+        if(colnum <= 0 || colnum > tabNode.rows[0].cells.length){
+            alert("colnum is incorrect!");
+            return;
+        }
+        for(var i = 0; i < tabNode.rows.length; i++){
+            tabNode.rows[i].deleteCell(colnum-1);
+        }
+    }
+
+
+
+
+
+</script>
+
+</head>
+<body>
+   Row <input type="text" name="row"><br>
+   Col <input type="text" name="col"><br>
+    <input type="button" value = "create table" onclick="createTable(this)"><br>
+    Delete Row:
+   <input type="text" name="delRow">
+   <input type="button" onclick="deleteRow()" value="ROW"><br>
+    Delete Col:
+   <input type="text" name="delCol" >
+   <input type="button" onclick="deleteCol()" value="COlUMN"><br>
+
+   <div></div>
+</body>
+</html>

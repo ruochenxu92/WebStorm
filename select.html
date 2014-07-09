@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #cssid{
+            height:200px;
+            width:320px;
+            background-color: #66FFCC;
+        }
+        #textid{
+            background-color: #CCCCCC;
+            width:300px;
+        }
+    </style>
+    <script type="text/javascript">
+        function change(){
+            //get selected value
+            var selectNode = document.getElementById("selectid");
+            var value = selectNode.options[selectNode.selectedIndex].value;
+
+            var divcssid = document.getElementById("cssid");
+            var textid = document.getElementById("textid");
+
+            divcssid.style.textTransform = value;
+            textid.innerHTML = "text-transform : " + value;
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+<div id ="cssid">
+
+    As UIUC computer science student, I need to fight with myself!
+
+</div>
+
+
+
+    <select id ="selectid" onclick="change()">
+        <option value="none">--text-transform--</option>
+        <option value = "capitalize">capitalize</option>
+        <option value = "uppercase">uppercase</option>
+        <option value = "lowercase">lowercase</option>
+
+    </select>
+
+
+ <div id="textid">
+        text-transform : none;
+</div>
+
+</body>
+</html>
